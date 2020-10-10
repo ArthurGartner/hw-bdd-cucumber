@@ -23,9 +23,15 @@ Background: movies have been added to database
   Then 10 seed movies should exist
 
 Scenario: sort movies alphabetically
+  When I check the following ratings: G PG PG-13 NC-17 R
+  Then I press "Refresh"
   When I follow "Movie Title"
-  # your steps here
+  Then I should see "2001: A Space Odyssey" before "Aladdin"
+  And I should see "Chicken Run" before "Chocolat"
 
 Scenario: sort movies in increasing order of release date
+  When I check the following ratings: G PG PG-13 NC-17 R
+  Then I press "Refresh"
   When I follow "Release Date"
-  # your steps here
+  Then I should see "1989-07-21" before "1992-11-25"
+  And I should see "2000-06-21" before "2001-01-05"
